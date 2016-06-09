@@ -3,5 +3,4 @@
 require "bundler/setup"
 require "esl"
 
-require "pry"
-Pry.start
+Esl::CLI.new.call

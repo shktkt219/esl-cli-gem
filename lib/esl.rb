@@ -1,5 +1,7 @@
-require "esl/version"
+require "open-uri"
+require "nokogiri"
+require "pry"
 
-module Esl
-  # Your code goes here...
-end
+require_relative "./esl/version"
+require_relative "./esl/lesson"
+require_relative "./esl/cli"
