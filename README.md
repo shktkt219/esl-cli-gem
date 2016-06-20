@@ -1,6 +1,6 @@
-# Free ESL(English as a Second Language) Classes in NYC
+# English Classes in NYC
 
-This Ruby Gem provides a CLI to view the Free ESL(English as a Second Language) Classes in NYC.
+This Ruby Gem provides a CLI to view the ESL(English as a Second Language) Classes in NYC.
 
 ## Installation
 

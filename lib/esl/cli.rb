@@ -37,10 +37,12 @@ class Esl::CLI
 
   def print_lesson(lesson)
     puts ""
-    puts "----#{lesson.name}-----"
+    puts "*******#{lesson.name}*******"
     puts ""
     puts "Place: #{lesson.place}"
     puts "Price: #{lesson.price}"
+    puts ""
+    puts "#{lesson.summary}"
     puts ""
   end
 
