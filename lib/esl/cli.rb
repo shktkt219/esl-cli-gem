@@ -1,49 +1,47 @@
 class Esl::CLI
 
   def call
-    list_esl
-    menu
-    goodbye
+    Esl::Scraper.new.make_lessons
+    puts ""
+    puts "******** English Classes in the NYC **********"
+    start
   end
 
-  def list_esl
+  def start
     puts ""
-    puts "************* Free ESL classes in NY *************"
+    puts "What class would you like more information on?"
     puts ""
-    Esl::Lesson.all.each.with_index(1) do |le, i|
-      puts "#{i}. #{le.place} - #{le.name}"
-    end
-    puts ""
-  end
+    lesson_list
+    input = gets.strip.to_i
 
-  def print_esl(lesson)
-    puts ""
-    puts "---- #{lesson.place} - #{lesson.name} ----"
-    puts ""
-    puts lesson.summary
-    puts ""
-    puts "URL: #{lesson.url}"
-    puts ""
-  end
+    lesson = Esl::Lesson.find(input)
+    print_lesson(lesson)
 
-  def menu
-    input = nil
-    while input != "exit"
-      puts "Please enter the number of the class you'd like more information on."
-      puts "Enter list to see the classes again or enter exit to end the program."
-      input = gets.strip.downcase
+    puts ""
+    puts "Would you like to see another class? Enter Y or N"
 
-      if input.to_i > 0
-        lesson = Esl::Lesson.all[input.to_i-1]
-        print_esl(lesson)
-      elsif input == "list"
-        list_esl
-      end
+    input = gets.strip.downcase
+    if input == "y"
+      start
+    else
+      puts ""
+      puts "See you next time!"
     end
   end
 
-  def goodbye
-    puts "See you again!"
+  def lesson_list
+    Esl::Lesson.all.each.with_index(1) do |lesson, index|
+      puts "#{index}. #{lesson.name}"
+    end
+  end
+
+  def print_lesson(lesson)
+    puts ""
+    puts "----#{lesson.name}-----"
+    puts ""
+    puts "Place: #{lesson.place}"
+    puts "Price: #{lesson.price}"
+    puts ""
   end
 
 end
